@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test_leaderboard.dao.ExplainDao">
+
+    <resultMap type="Explain" id="explainMap">
+         <result property="explainContent" column="QUERY PLAN" />
+    </resultMap>
+
+
+    <select id="explainSQL" parameterType="String" resultMap="explainMap">
+        explain analyse ${value}
+    </select>
+
+</mapper>
