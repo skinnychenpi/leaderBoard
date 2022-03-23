@@ -6,7 +6,7 @@
 
 
     <insert id="record" >
-        insert into records values(#{userName},#{problemNumber},#{timeCost},#{currentTime})
+        insert into records values(nextval('records_submit_index_seq'),#{userName},#{problemNumber},#{timeCost},#{currentTime})
     </insert>
 
 </mapper>
