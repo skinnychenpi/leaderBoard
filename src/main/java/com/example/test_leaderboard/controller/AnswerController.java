@@ -17,6 +17,6 @@ public class AnswerController {
     public List<Object> Answer(@Param("sql") String sql,
                                @Param("userName") String userName,
                                @Param("problemNumber") int problemNumber){
-        return answerService.answer(sql.substring(0,sql.length()-1),userName,problemNumber);
+        return answerService.answer(sql,userName,problemNumber);
     }
 }

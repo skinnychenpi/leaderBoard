@@ -13,6 +13,6 @@ public class JudgeController {
 
     @RequestMapping("/judge")
     public boolean judgeSQL(@Param("sql") String sql,@Param("problemNumber") int problemNumber){
-        return judgeService.JudgeSQL(sql.substring(0,sql.length()-1),problemNumber);
+        return judgeService.JudgeSQL(sql,problemNumber);
     }
 }

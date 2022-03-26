@@ -15,6 +15,6 @@ public class StuServiceImpl implements StuService {
 
     @Override
     public List<Student> selectStudent(String sql) {
-        return stuDao.selectStudent(sql);
+        return stuDao.selectStudent(sql.substring(0,sql.length()-1));
     }
 }

@@ -16,7 +16,7 @@ public class JudgeServiceImpl implements JudgeService {
 
     @Override
     public boolean JudgeSQL(String sql, int problemNumber){
-        List<Judge> judgeList = judgeDao.JudgeSQL(sql,problemNumber);
+        List<Judge> judgeList = judgeDao.JudgeSQL(sql.substring(0,sql.length()-1),problemNumber);
         if(judgeList.size()==1)
             return true;
         else

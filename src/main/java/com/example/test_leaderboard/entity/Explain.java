@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class Explain {
+    //NOT USED
     private String explainContent;
 }

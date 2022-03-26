@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test_leaderboard.dao.RankDao">
+
+    <resultMap type="Rank" id="showAllRank">
+        <result property="rank" column="ranking" />
+        <result property="userName" column="user_name" />
+        <result property="problemNumber" column="problem_number" />
+        <result property="minTime" column="min_time" />
+        <result property="submitTime" column="submit_time" />
+    </resultMap>
+
+
+    <select id="showAllRank" parameterType="int" resultType="com.example.test_leaderboard.entity.Rank" resultMap="showAllRank">
+        select rank() over (order by subQuery.min_time,records.submit_time asc) as ranking,subQuery.user_name,subQuery.problem_number,subQuery.min_time, records.submit_time
+        from(select user_name,problem_number,min(time_cost) min_time
+             from records
+             where problem_number = #{problemNumber}
+             group by(user_name,problem_number)
+             order by min_time) subQuery, records
+        where records.time_cost = subQuery.min_time and records.user_name = subQuery.user_name
+                and records.problem_number = subQuery.problem_number;
+    </select>
+
+
+    <resultMap type="BigInteger" id="showUserRank">
+        <result property="userRank" column="ranking" />
+    </resultMap>
+
+    <select id="showUserRank" resultMap="showUserRank">
+        select ranking
+        from (select rank() over (order by subQuery.min_time,records.submit_time asc) as ranking,subQuery.user_name,
+                     subQuery.problem_number,
+                     subQuery.min_time,
+                     records.submit_time
+              from (select user_name, problem_number, min(time_cost) min_time
+                    from records
+                    where problem_number = #{problemNumber}
+                    group by(user_name, problem_number)
+                    order by min_time) subQuery,
+                   records
+              where records.time_cost = subQuery.min_time
+                and records.user_name = subQuery.user_name
+                and records.problem_number = subQuery.problem_number
+             )subsubQuery
+        where user_name = #{userName};
+    </select>
+
+</mapper>

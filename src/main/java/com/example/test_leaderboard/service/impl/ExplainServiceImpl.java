@@ -17,12 +17,16 @@ public class ExplainServiceImpl implements ExplainService {
 
 
     @Override
-    public double explainSQL(String sql){
+/*    public double explainSQL(String sql){
         List<Explain> explainMessage = explainDao.explainSQL(sql);
         for(int i = 0; i < explainMessage.size(); i++){
             if(explainMessage.get(i).getExplainContent().contains("Execution Time"))
                 return ExtractNumber.extractNumber(explainMessage.get(i).getExplainContent());
         }
         return 9999.9999;
+    }*/
+    public double explainSQL(String sql){
+        sql = sql.substring(0,sql.length()-1);
+        return Double.valueOf(explainDao.explainSQL(sql));
     }
 }
