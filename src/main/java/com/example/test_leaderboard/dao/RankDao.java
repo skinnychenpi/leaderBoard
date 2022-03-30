@@ -8,6 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface RankDao {
-    public List<Rank> showAllRank(int problemNumber);
-    public BigInteger showUserRank(int problemNumber, String userName);
+    public List<Rank> showAllRankFast(int problemNumber);
+    public List<Rank> showAllRankSlow(int problemNumber);
+    public BigInteger showUserRankFast(int problemNumber, String userName);
+    public BigInteger showUserRankSlow(int problemNumber, String userName);
 }

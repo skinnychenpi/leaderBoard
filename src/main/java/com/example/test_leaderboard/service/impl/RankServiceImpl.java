@@ -15,12 +15,18 @@ public class RankServiceImpl implements RankService {
     private RankDao rankDao;
 
     @Override
-    public List<Rank> showAllRank(int problemNumber){
-        return rankDao.showAllRank(problemNumber);
+    public List<Rank> showAllRank(int problemNumber,String order){
+        if(order.equals("fast"))
+            return rankDao.showAllRankFast(problemNumber);
+        else
+            return rankDao.showAllRankSlow(problemNumber);
     }
 
     @Override
-    public BigInteger showUserRank(int problemNumber, String userName){
-        return rankDao.showUserRank(problemNumber,userName);
+    public BigInteger showUserRank(int problemNumber, String userName, String order){
+        if(order.equals("fast"))
+            return rankDao.showUserRankFast(problemNumber,userName);
+        else
+            return rankDao.showUserRankSlow(problemNumber,userName);
     }
 }

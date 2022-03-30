@@ -12,4 +12,3 @@ CREATE TABLE records
     time_cost numeric,
     submit_time integer
 );
-

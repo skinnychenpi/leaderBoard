@@ -16,7 +16,8 @@ public class AnswerController {
     @RequestMapping("/answer")
     public List<Object> Answer(@Param("sql") String sql,
                                @Param("userName") String userName,
-                               @Param("problemNumber") int problemNumber){
-        return answerService.answer(sql,userName,problemNumber);
+                               @Param("problemNumber") int problemNumber,
+                               @Param("order") String order){
+        return answerService.answer(sql,userName,problemNumber,order);
     }
 }

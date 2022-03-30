@@ -9,6 +9,6 @@ public class Rank {
     private BigInteger rank;
     private String userName;
     private int problemNumber;
-    private double minTime;
+    private double timeCost;
     private long submitTime;
 }
