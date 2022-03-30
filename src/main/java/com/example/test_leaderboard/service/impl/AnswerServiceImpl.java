@@ -22,7 +22,7 @@ public class AnswerServiceImpl implements AnswerService {
     private RankServiceImpl rankService;
 
     @Override
-    public List<Object> answer(String sql, String userName, int problemNumber,String order){
+    public List<Object> answer(String sql, String userName, int problemNumber){
         List<Object> res = new ArrayList<>();
         res.add(stuService.selectStudent(sql));//add sql outcome anyway
         if(judgeService.JudgeSQL(sql,problemNumber)){//if sql is correct
@@ -32,7 +32,7 @@ public class AnswerServiceImpl implements AnswerService {
                     problemNumber,
                     explainService.explainSQL(sql),
                     System.currentTimeMillis()/1000);//record user info
-            res.add(rankService.showUserRank(problemNumber,userName,order)); //add user rank
+            res.add(rankService.showUserRank(problemNumber,userName)); //add user rank
         }
         else{//if sql is wrong
             res.add("Wrong SQL");

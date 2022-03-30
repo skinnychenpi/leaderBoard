@@ -6,5 +6,5 @@ import lombok.Data;
 public class Problem {
     private Integer problem_number;
     private String description;
-    //private String order;
+    private String order;
 }

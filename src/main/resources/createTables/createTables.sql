@@ -1,7 +1,8 @@
 CREATE TABLE problems
 (
     problem_number integer primary key,
-    description text
+    description text,
+    "order" varchar(4)
 );
 
 CREATE TABLE records

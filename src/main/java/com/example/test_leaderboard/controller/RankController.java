@@ -16,15 +16,13 @@ public class RankController {
     private RankService rankService;
 
     @RequestMapping("allRank")
-    public List<Rank> showAllRank(@Param("problemNumber") int problemNumber,
-                                  @Param("order") String order){
-        return rankService.showAllRank(problemNumber,order);
+    public List<Rank> showAllRank(@Param("problemNumber") int problemNumber){
+        return rankService.showAllRank(problemNumber);
     }
 
     @RequestMapping("userRank")
     public BigInteger showUserRank(@Param("problemNumber") int problemNumber,
-                                   @Param("userName") String userName,
-                                   @Param("order") String order){
-        return rankService.showUserRank(problemNumber,userName,order);
+                                   @Param("userName") String userName){
+        return rankService.showUserRank(problemNumber,userName);
     }
 }
