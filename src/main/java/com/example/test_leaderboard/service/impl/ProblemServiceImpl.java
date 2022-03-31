@@ -1,5 +1,7 @@
 package com.example.test_leaderboard.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public Problem selectProblem(Integer problemNumber) {
         return problemDao.selectProblem(problemNumber);
+    }
+
+    @Override
+    public List<Problem> showAllProblem() {
+        return problemDao.showAllProblem();
     }
 }

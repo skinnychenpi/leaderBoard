@@ -1,5 +1,7 @@
 package com.example.test_leaderboard.controller;
 
+import java.util.List;
+
 import com.example.test_leaderboard.entity.Problem;
 import com.example.test_leaderboard.service.ProblemService;
 import org.apache.ibatis.annotations.Param;
@@ -18,5 +20,10 @@ public class ProblemController {
     @RequestMapping(value = "/problem",method = RequestMethod.GET)
     public Problem selectStudent(@Param("problemNumber") Integer problemNumber){
         return problemService.selectProblem(problemNumber);
+    }
+
+    @RequestMapping(value = "/allProblem",method = RequestMethod.GET)
+    public List<Problem> showAllProblem(){
+        return problemService.showAllProblem();
     }
 }
