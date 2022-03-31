@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Group 9  - Online Ticket Booking Website</title>
+
+
+</head>
+
+<body>
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+    <!-- ==========Overlay========== -->
+    <div class="overlay"></div>
+    <a href="#0" class="scrollToTop">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- ==========Overlay========== -->
+
+    <!-- ==========Header-Section========== -->
+    <header class="header-section">
+                    <div class="container">
+                        <div class="header-wrapper">
+                            <div class="logo">
+                    <a href="index.html">
+                        <img src="/static/css/TicketBookingAssets/images/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                <ul class="menu">
+                    <li>
+                        <a href="/demo/userMovie" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="/demo/allMovie">Movie</a>
+                    </li>
+                    <li>
+                        <a href="/demo/mine">Mine</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <li>
+                        <a href="/app">APP</a>
+                    </li>
+                    <li>
+                        <a href="/login" >Log out</a>
+                    </li>
+                </ul>
+                <div class="header-bar d-lg-none">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+            </div>
+        </div>
+    </header>
+    <!-- ==========Header-Section========== -->
+
+    <!-- ==========Banner-Section========== -->
+    <section class="banner-section">
+        <div class="banner-bg bg_img bg-fixed" data-background="/static/css/TicketBookingAssets/images/banner/banner01.jpg"></div>
+        <div class="container">
+            <div class="banner-content">
+                <h1 class="title  cd-headline clip"><span class="d-block">book your</span> tickets for 
+                    <span class="color-theme cd-words-wrapper p-0 m-0">
+                        <b class="is-visible">Movie</b>
+                    </span>
+                </h1>
+                <p>Explore movies and buy tickets in this website!</p>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Banner-Section========== -->
+
+    <!-- ==========Ticket-Search========== -->
+    <section class="search-ticket-section padding-top pt-lg-0">
+        <div class="container">
+            <div class="search-tab bg_img" data-background="/static/css/TicketBookingAssets/images/ticket/ticket-bg01.jpg">
+                <div class="row align-items-center mb--20">
+                    <div class="col-lg-6 mb-20">
+                        <div class="search-ticket-header">
+                            <h6 class="category">welcome to Group 9 Online Ticket Booking Website</h6>
+                            <h3 class="title">what are you looking for</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-area">
+                    <div class="tab-item active">
+                        <form class="ticket-search-form" action="/movies/searchByKeyword" method="post">
+                            <div class="form-group large">
+                                <input type="text" name="keyword" placeholder="Search fo Movies">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <!-- ==========Ticket-Search========== -->
+
+    <!-- ==========Movie-Section========== -->
+    <section class="movie-section padding-top padding-bottom">
+        <div class="container">
+            <div class="tab">
+                <div class="section-header-2">
+                    <div class="left">
+                        <h2 class="title">movies</h2>
+                        <p>Be sure not to miss these Movies today.
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-area mb-30-none">
+                    <div class="tab-item active">
+                        <div class="owl-carousel owl-theme tab-slider">
+                            <div class="item" th:each="movie:${movies}">
+                                <div class="movie-grid">
+                                    <div class="movie-thumb c-thumb">
+                                        <a href="#0">
+                                            <img th:src="${movie.url}" alt="movie" height="400px">
+                                        </a>
+                                    </div>
+                                    <div class="movie-content bg-one">
+                                        <h5 class="title m-0">
+                                            <a th:href="@{'/demo/detail/'+${movie.id}}" th:text="${movie.title}"></a>
+                                        </h5>
+                                        <ul class="movie-rating-percent">
+                                            <li>
+                                                <div class="thumb">
+                                                    <img src="/static/css/TicketBookingAssets/images/movie/tomato.png" alt="movie">
+                                                </div>
+                                                <span class="content">88%</span>
+                                            </li>
+                                            <li>
+                                                <div class="thumb">
+                                                    <img src="/static/css/TicketBookingAssets/images/movie/cake.png" alt="movie">
+                                                </div>
+                                                <span class="content">88%</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Movie-Section========== -->
+</body>
+
+</html>
