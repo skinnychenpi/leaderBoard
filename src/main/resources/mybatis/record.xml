@@ -9,4 +9,21 @@
         insert into records values(nextval('records_submit_index_seq'),#{userName},#{problemNumber},#{timeCost},#{currentTime})
     </insert>
 
+
+    <resultMap type="UserRecord" id="userRecord">
+        <result property="submitIndex" column="submit_index" />
+        <result property="userName" column="user_name" />
+        <result property="problemNumber" column="problem_number" />
+        <result property="timeCost" column="time_cost" />
+        <result property="submitTime" column="submit_time" />
+    </resultMap>
+
+    <select id="userRecord" resultMap="userRecord">
+        select * from records
+        where problem_number = #{problemNumber} and user_name = #{userName}
+        order by submit_time asc;
+    </select>
+
+
+
 </mapper>
