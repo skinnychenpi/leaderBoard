@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Leaderboard</title>
+
+    <link th:href="@{https://fonts.googleapis.com/css?family=Galada|Ubuntu:400,500,700}" rel="stylesheet">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/iota.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/helpers/updateLeaderboardHTML.js}"></script>
+    <script type="text/javascript" th:src="@{/js/helpers/updateAddressHTML.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<main>
+    <header class="header">
+        <p class="header__title"><a style="color: white" th:href="@{/allProblem}">My <span><img class="header__logo" th:src="@{/images/logo.png}" /></span> Leaderboard</a></p>
+        <p class="header__title" th:text="Question-+${problemNumber}"></p>
+
+        <nav>
+            <div class="nav-right hidden-xs">
+                <div class="button" id="btn">
+                    <div class="bar top"></div>
+                    <div class="bar middle"></div>
+                    <div class="bar bottom"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="leaderboard">
+        <table class="table-fill">
+            <thead>
+            <tr>
+                <th class="amount__title"></th>
+                <th class="amount__title">Your Query</th>
+                <th class="amount__title">Time Consumed</th>
+                <th class="amount__title">Rank</th>
+            </tr>
+            </thead>
+            <tbody  id="leaderboard">
+            <tr>
+                <td class="iota__message"><button type="button" class="btn btn-primary"><a th:href="@{'/submitAnswer/'+${problemNumber}}" style="color: white">Back</a></button></td>
+                <td class="iota__value" th:text="${sql}"></td>
+                <td class="iota__value" th:text="${timeCost}"></td>
+                <td class="iota__value" th:text="${rank}">
+            </tr>
+
+            </tbody>
+        </table>
+        <table class="table-fill">
+            <thead>
+            <tr>
+                <th class="amount__title">Query Result</th>
+            </tr>
+            </thead>
+            <tbody  id="result">
+            <tr th:each="result:${results}">
+                <td class="iota__value" th:text="${result}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Sidebar -->
+<div class="sidebar donotdisplay">
+    <ul class="sidebar-list">
+        <li class="sidebar-item">
+            <a href="#" th:text="${user.user_name}" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">Username</a>
+        </li>
+        <li class="sidebar-item">
+            <a href="/login" class="sidebar-anchor" data-toggle="collapse" data-target="#getAddresses" aria-expanded="false" aria-controls="getAddresses">Log-out</a>
+        </li>
+        <li class="sidebar-item" style="opacity: 0">
+            <a href="#" >interval</a>
+        </li>
+
+        <li class="sidebar-item">
+            <a href="/allProblem" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">LeaderBoard</a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#getAddresses" aria-expanded="false" aria-controls="getAddresses">Submit History</a>
+
+        </li>
+    </ul>
+</div>
+</body>
+</html>

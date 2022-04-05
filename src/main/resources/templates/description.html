@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Problem 1 - My Leaderboard</title>
+
+    <link th:href="@{https://fonts.googleapis.com/css?family=Galada|Ubuntu:400,500,700}" rel="stylesheet">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style2.css}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/iota.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/helpers/updateLeaderboardHTML.js}"></script>
+    <script type="text/javascript" th:src="@{/js/helpers/updateAddressHTML.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<main>
+    <header class="header">
+        <p class="header__title"><a style="color: white" th:href="@{/allProblem}">My <span><img class="header__logo" th:src="@{/images/logo.png}" /></span> Leaderboard</a></p>
+        <p class="header__title" th:text="Question-+${problem.problem_number}"></p>
+        <nav>
+            <div class="nav-right hidden-xs">
+                <div class="button" id="btn">
+                    <div class="bar top"></div>
+                    <div class="bar middle"></div>
+                    <div class="bar bottom"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="domin">
+        <div class="words">
+            <h3>Description</h3>
+
+            <div class="description" th:text="${problem.description}">
+            </div>
+
+        </div>
+<!--        <p th:action="@{'/answerSubmit/'+${problem.problem_number}}" method="post" action="mysuperscript.php" autocomplete="on">-->
+        <div class="answers">
+<!--            <div class="container">-->
+<!--                <pre class="pre"><span /><br /><br /></pre>-->
+<!--                <textarea class="content" oninput="changeContent()"></textarea>-->
+<!--            </div>-->
+
+                <h3>Your Answer</h3>
+                <p>
+<!--                    <label for="answer" class="uname" data-icon="u" > Your Answer </label>-->
+<!--                    <input id="answer" name="answer" required="required" type="text" placeholder="Your answer"/>-->
+                    <form th:action="@{'/answerSubmit/'+${problem.problem_number}}" method="post" action="mysuperscript.php" autocomplete="on">
+                        <input class="content" type="text" id="sql" name="sql" />
+                        <div class="submits">
+                            <button class="btn_2" >Submit</button>
+                        </div>
+                    </form>>
+                </p>
+<!--                <p>-->
+<!--                <h3 class="results">Results</h3>-->
+<!--                <div class="result" th:text="${timeCost}">-->
+<!--                    Successfully run. Total query runtime: 184 msec.<br>-->
+<!--                    10000 rows affected.-->
+
+<!--                </div>-->
+<!--                </p>-->
+<!--                <div class="result_table">-->
+<!--                <table class="table-fill table-2">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--&lt;!&ndash;                        <th>#</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th>When</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th>Problem</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th>Status</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th>Time</th>&ndash;&gt;-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>10007</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>2022-03-26 19:34</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Problem 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Pass</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>39.92 ms</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>10005</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>2022-03-26 18:47</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Problem 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Pass</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>40.55 ms</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>10002</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>2022-03-26 18:02</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Problem 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>Pass</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>31.21 ms</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--                </div>-->
+<!--                <p class="login button">-->
+<!--                    <input type="submit" value="Submit" />-->
+<!--                </p>-->
+
+        </div>
+    </section>
+</main>
+
+<!-- Sidebar -->
+<div class="sidebar donotdisplay">
+    <ul class="sidebar-list">
+        <li class="sidebar-item">
+            <a href="#" th:text="${user.user_name}" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">Username</a>
+
+        </li>
+        <li class="sidebar-item">
+            <a href="/login" class="sidebar-anchor" data-toggle="collapse" data-target="#getAddresses" aria-expanded="false" aria-controls="getAddresses">Log-out</a>
+
+        </li>
+        <li class="sidebar-item" style="opacity: 0">
+            interval
+        </li>
+
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">Question answer</a>
+        </li>
+
+        <li class="sidebar-item">
+            <a href="/allProblem" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">Leaderboard</a>
+        </li>
+
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">History</a>
+        </li>
+    </ul>
+
+<!--    <script>-->
+<!--        function changeContent(){-->
+<!--            var $textarea = document.getElementsByClassName('content');-->
+<!--            var $pre = document.getElementsByClassName('pre');-->
+<!--            $pre[0].innerHTML = $textarea[0].value;-->
+<!--        }-->
+<!--    </script>-->
+
+</body>
+</html>

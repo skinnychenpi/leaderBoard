@@ -11,4 +11,7 @@ public interface UserDao {
     public List<User> verifyUsernameAndPassword(String user_name, String password);
     public List<User> verifyUserExistence(String user_name);
     public void register(String user_name, String password);
+    public List<User> findUserById(int user_id);
+
+
 }

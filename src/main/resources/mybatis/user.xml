@@ -12,6 +12,10 @@
         select * from users where user_name = #{user_name};
     </select>
 
+    <select id="findUserById" parameterType="int" resultType="com.example.test_leaderboard.entity.User">
+        select * from users where user_id = #{user_id};
+    </select>
+
     <insert id="register" >
         insert into users (user_name, password) values(#{user_name},#{password})
     </insert>

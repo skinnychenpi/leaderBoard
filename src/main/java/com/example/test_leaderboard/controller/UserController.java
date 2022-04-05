@@ -35,6 +35,11 @@ public class UserController {
         return "register";
     }
 
+    @GetMapping(path = "/history")
+    private String history() {
+        return "history";
+    }
+
     @PostMapping(path="/afterLogin")
     public String Login(@RequestParam("username") String user_name,
                         @RequestParam("password") String password){
@@ -44,7 +49,7 @@ public class UserController {
             UserInfo userInfo = new UserInfo(users.get(0).getUserId(), users.get(0).getUsername());
             HttpSession session = getRequest().getSession();
             session.setAttribute("current_user", userInfo);
-            return "index";
+            return "redirect:/allProblem";
 
         }
         else {

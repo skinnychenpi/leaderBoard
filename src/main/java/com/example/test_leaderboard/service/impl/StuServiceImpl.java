@@ -2,6 +2,7 @@ package com.example.test_leaderboard.service.impl;
 
 import com.example.test_leaderboard.dao.StuDao;
 import com.example.test_leaderboard.entity.Student;
+import com.example.test_leaderboard.entity.User;
 import com.example.test_leaderboard.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,4 +18,5 @@ public class StuServiceImpl implements StuService {
     public List<Student> selectStudent(String sql) {
         return stuDao.selectStudent(sql.substring(0,sql.length()-1));
     }
+
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History - My Leaderboard</title>
+
+    <link th:href="@{https://fonts.googleapis.com/css?family=Galada|Ubuntu:400,500,700}" rel="stylesheet">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/iota.min.js"></script>
+
+    <script type="text/javascript" src="/js/helpers/updateLeaderboardHTML.js"></script>
+    <script type="text/javascript" src="/js/helpers/updateAddressHTML.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</head>
+<body>
+<main>
+    <header class="header">
+        <p class="header__title">Submit<span><img class="header__logo" src="images/logo.png" /></span>History</p>
+        <p class="header__title">UserName</p>
+        <nav>
+            <div class="nav-right hidden-xs">
+                <div class="button" id="btn">
+                    <div class="bar top"></div>
+                    <div class="bar middle"></div>
+                    <div class="bar bottom"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="leaderboard">
+        <table class="table-fill">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>When</th>
+                <th>Problem</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>10007</td>
+                <td>2022-03-26 19:34</td>
+                <td>Problem 1</td>
+                <td>Pass</td>
+                <td>39.92 ms</td>
+            </tr>
+            <tr>
+                <td>10005</td>
+                <td>2022-03-26 18:47</td>
+                <td>Problem 1</td>
+                <td>Pass</td>
+                <td>40.55 ms</td>
+            </tr>
+            <tr>
+                <td>10002</td>
+                <td>2022-03-26 18:02</td>
+                <td>Problem 1</td>
+                <td>Pass</td>
+                <td>31.21 ms</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Sidebar -->
+<div class="sidebar donotdisplay">
+    <ul class="sidebar-list">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#setSeed" aria-expanded="false" aria-controls="setSeed">Username</a>
+
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#getAddresses" aria-expanded="false" aria-controls="getAddresses">Log-out</a>
+
+        </li>
+    </ul>
+</div>
+</body>
+</html>
