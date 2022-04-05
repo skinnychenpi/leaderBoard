@@ -8,6 +8,6 @@ import com.example.test_leaderboard.entity.Problem;
 
 @Mapper
 public interface ProblemDao {
-    Problem selectProblem(Integer problemNumber);
+    List<Problem> selectProblem(Integer problemNumber);
     List<Problem> showAllProblem();
 }

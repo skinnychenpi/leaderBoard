@@ -29,5 +29,10 @@ public class UserServiceImpl implements UserService {
         userDao.register(user_name, password);
     }
 
+    @Override
+    public List<User> findUserById(int user_id) {
+        return userDao.findUserById(user_id);
+    }
+
 
 }

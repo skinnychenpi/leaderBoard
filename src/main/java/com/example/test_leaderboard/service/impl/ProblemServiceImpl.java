@@ -15,7 +15,7 @@ public class ProblemServiceImpl implements ProblemService {
     private ProblemDao problemDao;
 
     @Override
-    public Problem selectProblem(Integer problemNumber) {
+    public List<Problem> selectProblem(Integer problemNumber) {
         return problemDao.selectProblem(problemNumber);
     }
 
